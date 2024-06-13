@@ -25,18 +25,15 @@ Base = declarative_base()
 
 db_session: ContextVar[Session] = ContextVar('db_session', default=Session(engine))
 
-
-
 def get_db():
     db: Session = SessionLocal()
-    # create_tables() to be called if we want to create tables
+    create_tables() #  to be called if we want to create tables
     try:
         yield db
     except Exception:
         db.rollback()
     finally:
         db.close()
-
 
 def context_aware_session():
     return db_session.get()

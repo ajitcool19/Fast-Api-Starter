@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-from buisness_logic.Schema.create_student import CreateStudent
+from buisness_logic.schema.create_student import CreateStudent
 from buisness_logic.controller.buisness_logic_controller import BuisnessLogicController
 
 router = APIRouter(prefix="/buisness-logic")

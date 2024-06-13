@@ -3,3 +3,5 @@ sqlalchemy
 starlette
 pydantic-settings
 sentry-sdk[fastapi]
+pyjwt
+cryptography
