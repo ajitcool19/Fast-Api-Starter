@@ -7,7 +7,7 @@ init_sentry() # Comment this line if you don't want to use sentry
 
 
 app = FastAPI()
-Middleware(app, ["db_session","timer","auth"])
+Middleware(app, ["login","db_session","timer","auth"])
 
 
 Routes(app).include_routes()

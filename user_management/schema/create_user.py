@@ -5,4 +5,3 @@ class CreateUser(Base):
     name: str
     email: str
     password: str
-    status: int

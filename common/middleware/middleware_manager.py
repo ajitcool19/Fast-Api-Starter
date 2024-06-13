@@ -1,13 +1,14 @@
 import heapq
 
 from fastapi import FastAPI
-
+from common.config.config import current_config
 
 class Middleware:
     def __init__(self, app : FastAPI, middlewares):
 
         middleware_priority = {
             "db_session": 1,
+            "login": 2,
             "timer": 2,
             "proxy_mapper": 2,
             "auth": 3
@@ -19,6 +20,10 @@ class Middleware:
         while priority_queue:
 
             _, middleware = heapq.heappop(priority_queue)
+
+            if middleware == "login":
+                from common.middleware.middlewares.login_middleware import LoginMiddleware
+                app.add_middleware(LoginMiddleware)
 
             if middleware == "db_session":
                 from common.middleware.middlewares.db_session_middleware import DbSessionMiddleware

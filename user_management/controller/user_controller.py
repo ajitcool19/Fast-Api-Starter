@@ -2,6 +2,7 @@ from user_management.crud.user_crud import Crud
 from user_management.models.user import User
 from common.database.database_config import context_aware_session
 from user_management.schema.create_user import CreateUser
+from user_management.schema.user_login import UserLogin
 
 
 class UserController:
@@ -18,6 +19,23 @@ class UserController:
         user.password = create_user.password
 
         return self.crud.create(user)
+
+    def login(self, user_login: UserLogin):
+        user = self.crud.read_by_email(user_login.email)
+        if user is None:
+            return {
+                "message": "User not found",
+                "status": 404
+            }
+        if user.password == user_login.password:
+            return {
+                "email": user.email,
+                "status": 200
+            }
+        return {
+            "message": "Invalid password",
+            "status": 401
+        }
 
 
 
