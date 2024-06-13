@@ -7,14 +7,16 @@ class Crud:
         pass
 
     def create(self, student: Student):
-        saved_data = context_aware_session().add(student)
+        context_aware_session().add(student)
 
         try:
             context_aware_session().commit()
+            context_aware_session().refresh(student)
+
         except Exception:
             context_aware_session().rollback()
             raise
-        return saved_data
+        return student.id
 
 
     def read(self, student_id: int):

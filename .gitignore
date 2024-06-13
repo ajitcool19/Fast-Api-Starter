@@ -1,3 +1,4 @@
 
 *.idea
 *venv-starter
+*/common/config/config.py

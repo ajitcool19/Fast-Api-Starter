@@ -2,3 +2,4 @@ fastapi
 sqlalchemy
 starlette
 pydantic-settings
+sentry-sdk[fastapi]
