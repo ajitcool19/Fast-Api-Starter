@@ -6,7 +6,7 @@ import jwt
 from starlette.responses import JSONResponse
 
 from common.config.config import current_config
-
+import datetime
 
 class LoginMiddleware(BaseHTTPMiddleware):
 
@@ -22,7 +22,9 @@ class LoginMiddleware(BaseHTTPMiddleware):
 
             if response_data ["status"] == 200:
                 # Generate a JWT token
-                token = jwt.encode({"email":response_data["email"]}, current_config.JWT_SECRET, algorithm="HS256")
+                token = jwt.encode({"email":response_data["email"], "time_claim" : datetime.datetime.now().timestamp() +
+                                    current_config.JWT_EXPIRATION_TIME
+                                    }, current_config.JWT_SECRET, algorithm="HS256")
                 # Attach the token to the response
                 response_data['token'] = token
                 return JSONResponse(content=response_data)
