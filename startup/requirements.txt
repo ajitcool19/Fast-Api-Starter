@@ -1,2 +1,4 @@
 fastapi
-gunicorn
+sqlalchemy
+starlette
+pydantic-settings

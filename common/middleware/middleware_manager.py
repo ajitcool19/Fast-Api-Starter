@@ -1,15 +1,14 @@
-from datetime import datetime
 import heapq
 
 from fastapi import FastAPI
-from starlette.requests import Request
 
 
 class Middleware:
     def __init__(self, app : FastAPI, middlewares):
 
         middleware_priority = {
-            "timer": 1,
+            "db_session": 1,
+            "timer": 2,
             "proxy_mapper": 2,
             "auth": 3
         }
@@ -18,7 +17,12 @@ class Middleware:
         heapq.heapify(priority_queue)
 
         while priority_queue:
+
             _, middleware = heapq.heappop(priority_queue)
+
+            if middleware == "db_session":
+                from common.middleware.middlewares.db_session_middleware import DbSessionMiddleware
+                app.add_middleware(DbSessionMiddleware)
 
             if middleware == "timer":
 

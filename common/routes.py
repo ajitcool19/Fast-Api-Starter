@@ -1,6 +1,4 @@
-from fastapi import APIRouter
-
-from buisness_logic.buisness_logic_routes import router as buisness_logic_router
+from buisness_logic.routes.buisness_logic_routes import router as buisness_logic_router
 
 
 class Routes:

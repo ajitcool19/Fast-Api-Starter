@@ -13,6 +13,7 @@ if environment not in ['local', 'dev', 'prod']:
 env.set(environment)
 
 if __name__ == "__main__":
+    print(f"Running in {get_env()} environment")
     uvicorn.run("startup.main:app", host="0.0.0.0", port=8000, reload=False)
     # if get_env() in ['local', 'dev','prod']:
     #     uvicorn.run("startup.main:app", host="0.0.0.0", port=8000, reload=False)
