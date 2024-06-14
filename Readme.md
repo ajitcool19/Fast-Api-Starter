@@ -9,9 +9,11 @@ This is a starter project for Fast-Api. It includes the following features:
 
 3: Pydantic Models
 
-4: Docker Support
+4: Docker Support (To be added)
 
 5: Sentry for Reporting
+
+6: Deepsource for Code Quality
 
 ### How to run
 1: Clone the repository
