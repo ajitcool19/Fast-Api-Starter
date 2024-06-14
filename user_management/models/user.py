@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, VARCHAR, DateTime, Boolean
+from sqlalchemy import Column, Integer, VARCHAR, DateTime
 
 from common.database.database_config import Base
 

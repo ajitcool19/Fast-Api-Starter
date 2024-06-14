@@ -1,5 +1,3 @@
-import logging
-
 from uuid import uuid4
 
 from starlette.middleware.base import BaseHTTPMiddleware

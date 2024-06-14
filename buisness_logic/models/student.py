@@ -1,5 +1,5 @@
 from common.database.database_config import Base
-from sqlalchemy import Column, Integer, Float, VARCHAR, DateTime, ForeignKey, Boolean
+from sqlalchemy import Column, Integer, VARCHAR
 
 
 class Student(Base):

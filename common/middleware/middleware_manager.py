@@ -1,5 +1,4 @@
 import heapq
-import logging
 
 from fastapi import FastAPI
 

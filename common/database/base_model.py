@@ -1,5 +1,5 @@
 import datetime
-from sqlalchemy import Column, Integer, DateTime
+from sqlalchemy import Column, DateTime
 from sqlalchemy import inspect
 
 from common.database.database_config import Base, context_aware_session

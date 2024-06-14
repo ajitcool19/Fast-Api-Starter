@@ -9,8 +9,6 @@ class AuthMiddleware(BaseHTTPMiddleware):
         super().__init__(app)
 
     async def dispatch(self, request, call_next):
-        print("request intercepted by auth middleware")
-
         if request.url.path == "/user/login":
             return await call_next(request)
 
@@ -29,8 +27,8 @@ class AuthMiddleware(BaseHTTPMiddleware):
                 email = jwt_payload.get("email")
                 print(email)
                 request.state.email = email
-            else:
-                return JSONResponse(status_code=401, content={"message": "Unauthorized"})
-        print(request.state.email)
-        print("Auth Middleware")
-        return await call_next(request)
+                return await call_next(request)
+
+            return JSONResponse(status_code=401, content={"message": "Unauthorized"})
+
+

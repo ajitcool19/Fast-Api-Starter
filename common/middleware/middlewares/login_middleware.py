@@ -14,7 +14,6 @@ class LoginMiddleware(BaseHTTPMiddleware):
         super().__init__(app)
 
     async def dispatch(self, request: Request, call_next):
-        print("request intercepted by login middleware")
         response = await call_next(request)
         response_body = [section async for section in response.__dict__['body_iterator']]
         response_content = b''.join(response_body).decode('utf-8')
