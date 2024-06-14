@@ -9,7 +9,7 @@ class Dev(BaseSettings):
 
     BASE_PATH: str = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
     # Sentry
-    SENTRY_DSN: str = 'https://794d55d76ded76dafa4f5d352255b8f4@o4507417719996416.ingest.us.sentry.io/4507423869566976'
+    SENTRY_DSN: str = 'dsn'
 
     # Set traces_sample_rate to 1.0 to capture 100%
     # of transactions for performance monitoring.
