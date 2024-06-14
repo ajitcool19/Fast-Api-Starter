@@ -16,10 +16,14 @@ class RouterLoggingMiddleware(BaseHTTPMiddleware):
         }
         request.state.request_id = request_id
         self._logger.info("Request received", extra=logging_dict)
+        try:
+            response = await call_next(request)
 
-        response = await call_next(request)
+            self._logger.info("Request completed", extra=logging_dict)
+            return response
 
-        self._logger.info("Request completed", extra=logging_dict)
-        return response
-
+        except Exception as e:
+            self._logger.error("Request failed", extra=logging_dict)
+            self._logger.error(str(e), extra=logging_dict)
+            return e
 

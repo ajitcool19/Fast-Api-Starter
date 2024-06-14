@@ -11,7 +11,8 @@ class Middleware:
             "request_logging": -3,
             "timer": -2,
             "proxy_mapper": -2,
-            "auth": -1
+            "auth": -1,
+            "response_formatter": -4,
         }
 
         priority_queue = [(middleware_priority[middleware], middleware) for middleware in middlewares]
@@ -45,6 +46,10 @@ class Middleware:
                 from common.middleware.middlewares.auth_middleware import AuthMiddleware
 
                 app.add_middleware(AuthMiddleware)
+
+            if middleware == "response_formatter":
+                from common.middleware.middlewares.standardize_response_middleware import StandardizeResponseMiddleWare
+                app.add_middleware(StandardizeResponseMiddleWare)
 
 
 
