@@ -6,3 +6,4 @@ sentry-sdk[fastapi]
 pyjwt
 cryptography
 python-json-logger
+# python-logging-loki # uncomment if you want to use Loki

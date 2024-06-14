@@ -3,6 +3,10 @@ import logging
 import os
 import sys
 from datetime import datetime
+from multiprocessing import Queue
+
+from logging_loki import LokiQueueHandler
+
 from common.configs.config import current_config
 
 
@@ -44,5 +48,13 @@ logging_config = {
     }
 }
 
+# loki_logs_handler = LokiQueueHandler(
+#     Queue(-1),
+#     url=current_config.LOKI_URL,
+#     tags={"application": "fastapi"},
+#     version="1",
+# )
+
 logging.config.dictConfig(logging_config)
 logger = logging.getLogger(__name__)
+# logger.addHandler(loki_logs_handler) add in case you want to send logs to loki
