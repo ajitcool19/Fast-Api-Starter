@@ -5,7 +5,7 @@ from starlette.middleware.base import BaseHTTPMiddleware
 import jwt
 from starlette.responses import JSONResponse
 
-from common.config.config import current_config
+from common.configs.config import current_config
 import datetime
 
 class LoginMiddleware(BaseHTTPMiddleware):

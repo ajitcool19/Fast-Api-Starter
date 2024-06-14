@@ -4,7 +4,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import Session, sessionmaker
 
-from common.config.config import current_config
+from common.configs.config import current_config
 
 
 def create_engine_based_on_env():

@@ -1,7 +1,7 @@
 import heapq
 
 from fastapi import FastAPI
-from common.config.config import current_config
+from common.configs.config import current_config
 
 class Middleware:
     def __init__(self, app : FastAPI, middlewares):
