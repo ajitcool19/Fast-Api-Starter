@@ -1,4 +1,4 @@
-from buisness_logic.models.student import Student
+from example.models.student import Student
 from common.database.database_config import context_aware_session
 
 

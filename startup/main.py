@@ -9,7 +9,7 @@ os.chdir(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 os.mkdir("logs") if not os.path.exists("logs") else None
 os.mkdir("sqllite_db") if not os.path.exists("sqllite_db") else None
 
-init_sentry() # Comment this line if you don't want to use sentry
+# init_sentry() # Comment this line if you don't want to use sentry
 
 
 app = FastAPI()

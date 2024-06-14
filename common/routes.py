@@ -1,4 +1,4 @@
-from buisness_logic.routes.buisness_logic_routes import router as buisness_logic_router
+from example.routes.buisness_logic_routes import router as buisness_logic_router
 from user_management.routes.user_routes import router as user_router
 
 class Routes:

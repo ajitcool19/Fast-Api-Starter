@@ -1,6 +1,6 @@
-from buisness_logic.schema.create_student import CreateStudent
-from buisness_logic.crud.buisness_logic_crud import Crud
-from buisness_logic.models.student import Student
+from example.schema.create_student import CreateStudent
+from example.crud.buisness_logic_crud import Crud
+from example.models.student import Student
 
 
 class BuisnessLogicController:
