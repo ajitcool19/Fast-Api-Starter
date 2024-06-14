@@ -1,17 +1,18 @@
 import heapq
+import logging
 
 from fastapi import FastAPI
-from common.configs.config import current_config
 
 class Middleware:
     def __init__(self, app : FastAPI, middlewares):
 
         middleware_priority = {
-            "db_session": 1,
-            "login": 2,
-            "timer": 2,
-            "proxy_mapper": 2,
-            "auth": 3
+            "db_session": -1,
+            "login": -2,
+            "request_logging": -3,
+            "timer": -2,
+            "proxy_mapper": -2,
+            "auth": -1
         }
 
         priority_queue = [(middleware_priority[middleware], middleware) for middleware in middlewares]
@@ -24,6 +25,10 @@ class Middleware:
             if middleware == "login":
                 from common.middleware.middlewares.login_middleware import LoginMiddleware
                 app.add_middleware(LoginMiddleware)
+
+            if middleware == "request_logging":
+                from common.middleware.middlewares.request_logging_middleware import RouterLoggingMiddleware
+                app.add_middleware(RouterLoggingMiddleware)
 
             if middleware == "db_session":
                 from common.middleware.middlewares.db_session_middleware import DbSessionMiddleware

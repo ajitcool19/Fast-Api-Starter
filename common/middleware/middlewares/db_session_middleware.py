@@ -7,6 +7,8 @@ class DbSessionMiddleware(BaseHTTPMiddleware):
         super().__init__(app)
 
     async def dispatch(self, request, call_next):
+        print("request intercepted by db session middleware")
+
         db_session.set(next(get_db()))
         response = await call_next(request)
         # close connection after each call

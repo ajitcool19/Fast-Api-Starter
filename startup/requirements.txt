@@ -5,3 +5,4 @@ pydantic-settings
 sentry-sdk[fastapi]
 pyjwt
 cryptography
+python-json-logger

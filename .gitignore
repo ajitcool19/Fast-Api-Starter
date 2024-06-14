@@ -1,4 +1,6 @@
 
 *.idea
 *venv-starter
-*/common/config/config.py
+*/common/configs/config.py
+*/logs
+*/sqllite_db

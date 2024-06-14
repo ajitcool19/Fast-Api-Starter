@@ -1,14 +1,15 @@
 from functools import lru_cache
 
 from pydantic_settings import BaseSettings
-
+import os
 
 class Dev(BaseSettings):
     DEBUG: bool = True
-    SQLALCHEMY_DATABASE_URI: str = 'sqlite:///dev-site.db'
+    SQLALCHEMY_DATABASE_URI: str = 'sqlite:///../sqllite_db/dev-site.db'
 
+    BASE_PATH: str = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
     # Sentry
-    SENTRY_DSN: str = 'dsn'
+    SENTRY_DSN: str = 'https://794d55d76ded76dafa4f5d352255b8f4@o4507417719996416.ingest.us.sentry.io/4507423869566976'
 
     # Set traces_sample_rate to 1.0 to capture 100%
     # of transactions for performance monitoring.
@@ -23,7 +24,7 @@ class Dev(BaseSettings):
     JWT_EXPIRATION_TIME: int = 360000
 
     # Middlewares
-    MIDDLEWARES: list = ["login","db_session","timer","auth"]
+    MIDDLEWARES: list = ["login","db_session","timer","auth","request_logging"]
 
 
 
