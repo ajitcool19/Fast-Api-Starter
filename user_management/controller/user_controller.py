@@ -1,8 +1,8 @@
 from user_management.crud.user_crud import Crud
 from user_management.models.user import User
-from common.database.database_config import context_aware_session
 from user_management.schema.create_user import CreateUser
 from user_management.schema.user_login import UserLogin
+from common.database.database_config import context_aware_session
 
 
 class UserController:
