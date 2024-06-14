@@ -41,7 +41,7 @@ logging_config = {
     "root": {
         "level": "DEBUG",
         "handlers": [
-            "console",
+            # "console", # Comment this line if you don't want to log to console
             "file"
         ],
         "propagate": True
