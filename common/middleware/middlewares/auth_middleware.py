@@ -16,19 +16,18 @@ class AuthMiddleware(BaseHTTPMiddleware):
         auth = headers.get('Authorization')
         if not auth:
             return JSONResponse(status_code=401, content={"message": "Unauthorized"})
-        else:
-            if " " not in auth and len(auth.split(" ")) != 2:
-                return JSONResponse(status_code=401, content={"message": "Unauthorized"})
-            token = auth.split(" ")[1]
-
-            jwt_payload = jwt.decode(token, current_config.JWT_SECRET, algorithms=["HS256"])
-
-            if jwt_payload:
-                email = jwt_payload.get("email")
-                print(email)
-                request.state.email = email
-                return await call_next(request)
-
+        if " " not in auth and len(auth.split(" ")) != 2:
             return JSONResponse(status_code=401, content={"message": "Unauthorized"})
+        token = auth.split(" ")[1]
+
+        jwt_payload = jwt.decode(token, current_config.JWT_SECRET, algorithms=["HS256"])
+
+        if jwt_payload:
+            email = jwt_payload.get("email")
+            print(email)
+            request.state.email = email
+            return await call_next(request)
+
+        return JSONResponse(status_code=401, content={"message": "Unauthorized"})
 
 
